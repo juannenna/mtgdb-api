@@ -1,0 +1,25 @@
+const mongoose = require('mongoose');
+const mongoosePaginate = require('mongoose-paginate');
+const DBCardSchema = new mongoose.Schema({
+  artist: String,
+  colorIdentity: Array,
+  printings: String,
+  price: String,
+  foil: String,
+  rarity: String,
+  cmc: String,
+  type: String,
+  colors: Array,
+  manaCost: String,
+  multiverseid: String,
+  name: String,
+  number: String,
+  power: String,
+  subtypes: Array,
+  text: String,
+  toughness: String,
+  types: Array,
+  flavor: String
+});
+DBCardSchema.plugin(mongoosePaginate);
+module.exports = mongoose.model('DBCard', DBCardSchema);
