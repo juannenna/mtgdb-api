@@ -74,7 +74,7 @@ module.exports.getDBCards = (event, context, callback) => {
   connectToDatabase()
     .then(() => {
       let options = event.queryStringParameters && event.queryStringParameters.page ? {page: event.queryStringParameters.page} : {page: 1}
-      let query = event.queryStringParameters && event.queryStringParameters.cardName ? { name: new RegExp('^'+ event.queryStringParameters.cardName +'$', "i") } : {}
+      let query = event.queryStringParameters && event.queryStringParameters.cardName ? { name: new RegExp(event.queryStringParameters.cardName, "i") } : {}
       DBCard.paginate(query, options)
         .then(cards => callback(null, {
           statusCode: 200,
